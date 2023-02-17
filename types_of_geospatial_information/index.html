@@ -195,6 +195,9 @@
     Search by Resource Class
   </a>
 </li>
+</ul>
+</nav>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#related-resources">
     Related Resources
@@ -204,9 +207,6 @@
 <a class="md-nav__link" href="#exercise">
     Exercise
   </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#wrapping-up">
@@ -290,6 +290,9 @@
     Search by Resource Class
   </a>
 </li>
+</ul>
+</nav>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#related-resources">
     Related Resources
@@ -299,9 +302,6 @@
 <a class="md-nav__link" href="#exercise">
     Exercise
   </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#wrapping-up">
@@ -353,9 +353,15 @@ https://sites.google.com/umn.edu/btaa-gdp/about/project-documents/glossary</p>
 <li>GIS data are usually stored in one of the following data models</li>
 <li>Vector</li>
 <li>Raster</li>
-<li>Tabular</li>
-<li>Geospatial information can be found from scanned maps</li>
-<li>GIS data can be hosted online using web services</li>
+<li>
+<p>Tabular</p>
+</li>
+<li>
+<p>Geospatial information can be found from scanned maps</p>
+</li>
+<li>
+<p>GIS data can be hosted online using web services</p>
+</li>
 </ul>
 <table>
 <tr>
@@ -389,23 +395,34 @@ https://sites.google.com/umn.edu/btaa-gdp/about/project-documents/glossary</p>
 </tr>
 </table>
 <ul>
-<li>Vector data are comprised of vertices and lines (or arcs), represented explicitly in the form of XY coordinates.</li>
-<li>The 3 basic geometry types for vector data are:</li>
-<li>Points - XY coordinates<ul>
+<li>
+<p>Vector data are comprised of vertices and lines (or arcs), represented explicitly in the form of XY coordinates.</p>
+</li>
+<li>
+<p>The 3 basic geometry types for vector data are:</p>
+</li>
+<li>
+<p>Points - XY coordinates</p>
+<ul>
 <li>Example: cities, schools, incident locations</li>
 </ul>
 </li>
-<li>Lines - connecting the points in a set order<ul>
+<li>
+<p>Lines - connecting the points in a set order</p>
+<ul>
 <li>Example: roads, streams</li>
 </ul>
 </li>
-<li>Polygons - a set of points in a particular order and
-Close it (the 1st and last point are the same)<ul>
+<li>
+<p>Polygons - a set of points in a particular order and close it (the 1st and last point are the same)</p>
+<ul>
 <li>Example: a state, county, or census block</li>
 </ul>
 </li>
-<li>Most GIS applications do not allow mixed geometry type
-In a single layer</li>
+<li>
+<p>Most GIS applications do not allow mixed geometry type
+In a single layer</p>
+</li>
 </ul>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Vector Data Types" data-width="100%" href="../images/vector-data.png"><img alt="Vector Data Types" src="../images/vector-data.png"/></a><br/>
 <strong>Figure 01</strong>. Vector Data Types *Used by permission of Paul Bolstad, GIS Fundamentals</p>
@@ -429,15 +446,274 @@ In a single layer</li>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Quantitative Symbol" data-width="100%" href="../images/quantitative-symbol.png"><img alt="Quantitative Symbol" src="../images/quantitative-symbol.png"/></a><br/>
 <strong>Figure 05</strong>. Quantitative Symbol</p>
 <h3 id="raster-data">Raster Data</h3>
+<table>
+<tr>
+<td>Vector</td>
+<td rowspan="4">Web Services</td>
+</tr>
+<tr>
+<th style="color:red;">Raster</th>
+</tr>
+<tr>
+<td>Tabular</td>
+</tr>
+<tr>
+<td>Scanned Map</td>
+</tr>
+</table>
+<ul>
+<li>
+<p>Raster data is made up of pixels with each pixel has its own 
+Value.</p>
+</li>
+<li>
+<p>Raster data is usually used to represent surfaces.</p>
+</li>
+<li>
+<p>Raster data model is commonly used for digital elevation models (DEM), aerial and satellite imagery, and land use land cover maps.</p>
+</li>
+<li>
+<p>Raster data resolution: cell dimension, or the size of pixels.</p>
+</li>
+<li>
+<p>Raster images can consume a large amount of storage space.</p>
+</li>
+</ul>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Raster Data Types" data-width="100%" href="images/raster-data.png"><img alt="Raster Data Types" src="images/raster-data.png"/></a><br/>
+<strong>Figure 06</strong>. Raster Data Types *Used by permission of Paul Bolstad, GIS Fundamentals</p>
+<ul>
+<li>
+<p>Two types of raster data: <strong>continuous</strong> and <strong>discrete</strong></p>
+</li>
+<li>
+<p><strong>Discrete</strong> rasters have distinct themes or categories. Each class can be discretely defined, usually ba integer values. Example, land cover/use map.</p>
+</li>
+<li>
+<p><strong>Continuous</strong> rasters are grid cells with gradual changing data such as elevation and temperature.</p>
+</li>
+</ul>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Raster Two Types" data-width="100%" href="images/raster-two-types.png"><img alt="Raster Two Types" src="images/raster-two-types.png"/></a><br/>
+<strong>Figure 07</strong>. Continuous and Categorical Data *Used by permission of Paul Bolstad, GIS Fundamentals</p>
+<ul>
+<li>Raster data are usually saved in the format of raster dataset, GeoTIFF, or many other formats.</li>
+</ul>
 <h3 id="vector-vs-raster">Vector vs. Raster</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Vector</strong></th>
+<th><strong>Raster</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Positional Precision</strong></td>
+<td>Can be precise</td>
+<td>Defined by cell size</td>
+</tr>
+<tr>
+<td><strong>Attribute Precision</strong></td>
+<td>Poor for continuous data</td>
+<td>Good for continuous data</td>
+</tr>
+<tr>
+<td><strong>Output Quality</strong></td>
+<td>Very good, map like</td>
+<td>Fair to poor, depending on resolution</td>
+</tr>
+<tr>
+<td><strong>Data Structure</strong></td>
+<td>Often complex</td>
+<td>Often quite simple</td>
+</tr>
+<tr>
+<td><strong>Storage Requirement</strong></td>
+<td>Relatively small</td>
+<td>Often quite large</td>
+</tr>
+<tr>
+<td><strong>Spatial Analysis</strong></td>
+<td>Good topology relationship</td>
+<td>Good for modeling</td>
+</tr>
+</tbody>
+</table>
 <h3 id="tabular-data">Tabular Data</h3>
+<table>
+<tr>
+<td>Vector</td>
+<td rowspan="4">Web Services</td>
+</tr>
+<tr>
+<td>Raster</td>
+</tr>
+<tr>
+<th style="color:red;">Tabular</th>
+</tr>
+<tr>
+<td>Scanned Map</td>
+</tr>
+</table>
+<ul>
+<li>
+<p>Tables with geospatial information can be used for mapping purpose in GIS.</p>
+</li>
+<li>
+<p>Tables with information that can be joined with an existing map 
+  Reference: Tutorial about table join</p>
+</li>
+<li>
+<p>Tables with XY coordinate information</p>
+</li>
+<li>
+<p>Tables with address information</p>
+<ul>
+<li>Geocoding</li>
+</ul>
+</li>
+</ul>
 <h3 id="scanned-maps">Scanned Maps</h3>
+<table>
+<tr>
+<td>Vector</td>
+<td rowspan="4">Web Services</td>
+</tr>
+<tr>
+<td>Raster</td>
+</tr>
+<tr>
+<td>Tabular</td>
+</tr>
+<tr>
+<th style="color:red;">Scanned Map</th>
+</tr>
+</table>
+<ul>
+<li>
+<p>A scanned map stored as an image file.</p>
+<ul>
+<li>
+<p>Georeferenced scanned map: has a linked file that stores spatial information so that it can be overlayed with other digital maps in GIS. Usually stored as GeoTIFF.</p>
+</li>
+<li>
+<p>Un-georeferenced scanned map: The presence of coordinates in the record’s metadata does not make the map georeferenced. Can be saved as TIFF or JPG, etc.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Scanned Map" data-width="100%" href="images/scan-map.png"><img alt="Scanned Map" src="images/scan-map.png"/></a><br/>
+<strong>Figure 08</strong>. A Scanned Map</p>
 <h3 id="web-services-gis">Web Services - GIS</h3>
+<table>
+<tr>
+<td>Vector</td>
+<th rowspan="4" style="color:red;">Web Services</th>
+</tr>
+<tr>
+<td>Raster</td>
+</tr>
+<tr>
+<td>Tabular</td>
+</tr>
+<tr>
+<td>Scanned Map</td>
+</tr>
+</table>
+<ul>
+<li>
+<p>A streaming GIS layer that can be viewed and queried in a
+browser or GIS application.</p>
+</li>
+<li>
+<p>Types of GIS web services - they are often provided using either Esri format or open standard defined by Open Geospatial Consortium (OGC)</p>
+</li>
+</ul>
+<table>
+<tr>
+<th rowspan="4">Esri</th>
+<td>ArcGIS Dynamic Map Layer Service</td>
+<td>Vector data. Map image layers are dynamically rendered.</td>
+</tr>
+<tr>
+<td>ArcGIS Feature Layer Service</td>
+<td>Displays vector data as individual or collected features.</td>
+</tr>
+<tr>
+<td>ArcGIS Image Map Layer Service</td>
+<td>Displays raster data (a grid of cells used to store imagery).</td>
+</tr>
+<tr>
+<td>ArcGIS Tiled Map Layer Service</td>
+<td>Displays set of web-accessible tiles that reside on a server.</td>
+</tr>
+<tr>
+<th rowspan="2">OGC</th>
+<td>Web Mapping Service (WMS)</td>
+<td>Renders a geospatial dataset as map images.</td>
+</tr>
+<td>Web Feature Service (WFS)</td>
+<td>Serves queryable geographic features.</td>
+<tr>
+<th>IIIF</th>
+<td>International Image Interoperability Framework (IIIF)</td>
+<td>Displays an image from a server. This image can be panned and zoomed.</td>
+</tr>
+</table>
 <h2 id="how-to-find-these-data-in-the-btaa-geoportal">How to Find These Data in the BTAA Geoportal</h2>
+<p>The <a href="https://geo.btaa.org/">Big Ten Academic Alliance Geoportal</a> connects users to digital geospatial resources, including <strong>GIS datasets</strong>, <strong>web services</strong>, and <strong>digitized historical maps</strong> from multiple data clearinghouses and library catalogs. The site is solely a search tool and does not host any data.</p>
 <h3 id="search-by-resource-class">Search by Resource Class</h3>
-<h3 id="related-resources">Related Resources</h3>
-<h3 id="exercise">Exercise</h3>
+<p>Once you are at the search results page of BTAA Geoportal, you have filter options on the left of the screen. You can filter your search by <strong>Resource Class</strong>.</p>
+<ul>
+<li>
+<p><strong>Datasets:</strong> vector or raster data</p>
+</li>
+<li>
+<p><strong>Maps:</strong> scanned maps and photographs</p>
+</li>
+<li>
+<p><strong>Web Services:</strong> for items with a web service, such as an ArcGIS REST service, an OGC web service, or IIIF.</p>
+</li>
+<li>
+<p><strong>Imagery</strong> Aerial photography and satellite imagery</p>
+</li>
+<li>
+<p><strong>Collections:</strong> describe a group of records, typically as a description of and website link to the group’s original geoportal or library.</p>
+</li>
+<li>
+<p><strong>Websites:</strong> interactive web resource, such as dashboard.</p>
+</li>
+</ul>
+<h2 id="related-resources">Related Resources</h2>
+<ul>
+<li>
+<p><a href="https://sites.google.com/umn.edu/btaa-gdp/about/project-documents/glossary">BTAA Geoportal Project Glossary of Terms</a></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1xL_DnaKo6ECf7qcLVHdXPTVafcFk0wCHB7CLBayRPnA/edit#slide=id.g86c86e5ff3_0_881">Finding Geospatial Data (Tutorial)</a></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/presentation/d/16wAdW9CNF_-8uzbShy5BCR_DXCQwsnpJ5mRWvp4Hubw/edit#slide=id.p1">Linking tabular data to geospatial data (Tutorial)</a></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1wDmTt4HCwKOFn_4uSUBW2rrJlxWODiFfs-lP8-CWLQU/edit#slide=id.p2">Using GIS web services (Tutorial)</a></p>
+</li>
+</ul>
+<h2 id="exercise">Exercise</h2>
+<ul>
+<li>Find an example for each of following type of data from BTAA geoportal. Discuss the use cases of each data type, as well as pros/cons of the particular data type.</li>
+<li>Vector data</li>
+<li>Raster data</li>
+<li>Scanned map</li>
+<li>Web service</li>
+</ul>
 <h2 id="wrapping-up">Wrapping Up</h2>
+<p>This tutorial is part of an educational series produced by members of the <a href="https://geo.btaa.org/">Big Ten Academic Alliance Geoportal</a>. The BTAA Geoportal connects users to digital geospatial resources, including GIS datasets, web services, and digitized historical maps from multiple data clearinghouses and library catalogs. The site is solely a search tool and does not host any data.</p>
+<p>To access additional tutorials in this series that cover various other topics, visit: https://sites.google.com/umn.edu/btaa-gdp/tutorials. </p>
+<p><strong>License statement:</strong>
+Except where otherwise noted, content in this tutorial is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.</p>
+<p><strong>Providing attribution for this work:</strong>
+“Types of Geospatial Information” by <a href="https://www.lib.purdue.edu/people/kongn">Nicole Kong</a> is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.</p>
 </article>
 </div>
 </div>
