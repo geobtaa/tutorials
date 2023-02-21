@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Big Ten Academic Alliance Geospatial Information Network" name="author"/>
+<link href="https://geobtaa.github.io/tutorials/linking_tabular_data_to_geospatial_data/" rel="canonical"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
+<title>Linking Tabular Data to Geospatial Data - GeoBTAA Tutorials</title>
+<link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="None" data-md-color-primary="None" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#linking-tabular-data-to-geospatial-data">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="GeoBTAA Tutorials" class="md-header__button md-logo" data-md-component="logo" href=".." title="GeoBTAA Tutorials">
+<img alt="logo" src="../images/btaa-logo-white.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            GeoBTAA Tutorials
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Linking Tabular Data to Geospatial Data
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden="">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="GeoBTAA Tutorials" class="md-nav__button md-logo" data-md-component="logo" href=".." title="GeoBTAA Tutorials">
+<img alt="logo" src="../images/btaa-logo-white.png"/>
+</a>
+    GeoBTAA Tutorials
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../georeference/">
+        Georeference
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../glossary/">
+        Glossary
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Linking Tabular Data to Geospatial Data
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Linking Tabular Data to Geospatial Data
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#contents">
+    Contents
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+    Introduction
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#download-data">
+    Download Data
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prepare-data">
+    Prepare Data
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data-process">
+    Data Process
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exercise">
+    Exercise
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#wrapping-up">
+    Wrapping Up
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../story_maps/">
+        Story Maps
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tutorial_web-services/">
+        Find &amp; Use GIS Web Services with the BTAA Geoportal
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../types_of_geospatial_information/">
+        Types of Geospatial Information
+      </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#contents">
+    Contents
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+    Introduction
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#download-data">
+    Download Data
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prepare-data">
+    Prepare Data
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data-process">
+    Data Process
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exercise">
+    Exercise
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#wrapping-up">
+    Wrapping Up
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download="" href="linking_tabular_data_to_geospatial_data.pdf" title="PDF Export"><svg style="height: 1.2rem; width: 1.2rem;" viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm76.45 211.36l-96.42 95.7c-6.65 6.61-17.39 6.61-24.04 0l-96.42-95.7C73.42 337.29 80.54 320 94.82 320H160v-80c0-8.84 7.16-16 16-16h32c8.84 0 16 7.16 16 16v80h65.18c14.28 0 21.4 17.29 11.27 27.36zM377 105L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z"></path></svg></a>
+<h1 id="linking-tabular-data-to-geospatial-data">Linking Tabular Data to Geospatial Data</h1>
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#download-data">Download Data</a></li>
+<li><a href="#prepare-data">Prepare Data</a></li>
+<li><a href="#data-process">Data Process</a></li>
+<li><a href="#exercise">Exercise</a></li>
+<li><a href="#wrapping-up">Wrapping Up</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>This tutorial gives an example to help students understand GIS technology allows people to connect data with geography. GIS can relate unrelated information by using location as the key index variable. Sometimes people don’t fully understand their data until they see how it relates to other things in a geographic context. And GIS can help people understand what belongs where.</p>
+<p>Through this tutorial, student can get familiar with how to link tabular data to geospatial data by using ArcGIS Online. Instructors can add more exercises based on students’ need.</p>
+<h2 id="download-data">Download Data</h2>
+<p>Geospatial Data is the data about a object that has a geographic component.</p>
+<p>The <a href="https://geo.btaa.org">Big Ten Academic Alliance Geoportal</a> connects users to digital geospatial resources, including GIS datasets, web services, and digitized historical maps from multiple data clearinghouses and library catalogs. The site is solely a search tool and does not host any data.</p>
+<p>Visit the Project <a href="https://sites.google.com/umn.edu/btaa-gdp/about/documentation?authuser=0">Documentation</a> page to find out more about our project's history, committees, working groups, conference presentations, and journal articles.</p>
+<p>The following steps show how to find geospatial data from BTAA geoportal and tabular data from U.S. Census:</p>
+<ol>
+<li>
+<p>Search the keywords "county boundary of Wisconsin" through BTAA geoportal</p>
+</li>
+<li>
+<p>Open the first result "County Boundaries, Wisconsin 2015"</p>
+</li>
+<li>
+<p>Click the "Original Shapefile" button to download the data. Save as "WI_Counties_2015.zip"</p>
+</li>
+</ol>
+<p>This polygon feature class represents boundaries of the 72 counties in Wisconsin. The data is derived from 1:24,000-scale sources. This feature class was last updated in June 2015.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Polygon Feature Class" data-width="100%" href="../images/wisconsin-2015.png"><img alt="Polygon Feature Class" src="../images/wisconsin-2015.png"/></a>\
+<strong>Figure 01</strong>. Polygon Feature Class for Wisconsin County Boundaries</p>
+<ol>
+<li>
+<p>Open U.S. Census website (<a href="https://www.census.gov/en.html">https://www.census.gov/en.html</a>) and search the keywords "wisconsin counties by population"</p>
+</li>
+<li>
+<p>Open the first result "County Population Totals: 2010-2019" and click Wisconsin to download the table.</p>
+</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="County Population" data-width="100%" href="../images/census-pop.png"><img alt="County Population" src="../images/census-pop.png"/></a>\
+<strong>Figure 02</strong>. Annual Estimates of the Resident Population for Counties in Wisconsin: April 1, 2010 to July 1, 2019 (CO-EST2019-ANNRES-55), U.S. Census Bureau, Population Division, March 2020</p>
+<h2 id="prepare-data">Prepare Data</h2>
+<ol>
+<li>Log into ArcGIS Online and create Web Map</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Add Layer" data-width="100%" href="../images/add-layer.png"><img alt="Add Layer" src="../images/add-layer.png"/></a>\
+<strong>Figure 03</strong>. Adding a Layer in ArcGIS Online</p>
+<ol>
+<li>Add WI_Counties_2015.zip as a new layer from File</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Choose File" data-width="100%" href="../images/choose-file.png"><img alt="Choose File" src="../images/choose-file.png"/></a>\
+<strong>Figure 04</strong>. Choosing a File in ArcGIS Online</p>
+<ol>
+<li>Choose an attribute to show. Here we use “show location only”</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Choose Attribute" data-width="100%" href="../images/choose-attribute.png"><img alt="Choose Attribute" src="../images/choose-attribute.png"/></a>\
+<strong>Figure 05</strong>. Choosing an Attribute to Show in ArcGIS Online</p>
+<ol>
+<li>Click “show table” button to open attribute table and get to know what information was included in the geospatial dataset.</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Show Table" data-width="100%" href="../images/show-table.png"><img alt="Show Table" src="../images/show-table.png"/></a>\
+<strong>Figure 06</strong>. Show Table in ArcGIS Online</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Attribute Table" data-width="100%" href="../images/attribute-table.png"><img alt="Attribute Table" src="../images/attribute-table.png"/></a>\
+<strong>Figure 07</strong>. Attribute Table in ArcGIS Online</p>
+<ol>
+<li>Create a new excel file and name it as "Wisconsin Counties by Population.csv". Copy and paste the county name column and population in 2019 column from U.S. Census spreadsheet into this new excel file. We need to use county name as the common field to link those two tables. Therefore, the name of counties in both table should be the same.\
+Notice: paste the values only and revise the name of counties by using replace tool.</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Shared Data" data-width="100%" href="../images/shared-data.png"><img alt="Shared Data" src="../images/shared-data.png"/></a>\
+<strong>Figure 08</strong>. Shared Attribute Between Two Tables</p>
+<ol>
+<li>Add the “Wisconsin Counties by Population.csv” as a new layer and choose “None, add as table”</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Add Layer from File" data-width="100%" href="../images/add-layer-from-file.png"><img alt="Add Layer from File" src="../images/add-layer-from-file.png"/></a>\
+<strong>Figure 09</strong>. Add Layer from File</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Add CSV" data-width="100%" href="../images/add-csv.png"><img alt="Add CSV" src="../images/add-csv.png"/></a>\
+<strong>Figure 10</strong>. Add CSV</p>
+<h2 id="data-process">Data Process</h2>
+<p>The following steps show how to link tabular data to the geospatial data: </p>
+<ol>
+<li>Click Analysis and choose Join Features</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Join Features" data-width="100%" href="../images/join-features.png"><img alt="Join Features" src="../images/join-features.png"/></a>\
+<strong>Figure 11</strong>. Joining Features</p>
+<ol>
+<li>
+<p>Choose WI_Counties_2015 as the “Target Layer” and Wisconsin Counties by Population as the “Layer to Join to the Target Layer”.</p>
+</li>
+<li>
+<p>Choose the “COUNTY_Nam” and “County” as the fields to match.</p>
+</li>
+<li>
+<p>Choose a one-to-one join operation and name the result layer as Wisconsin Counties by Population.</p>
+</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Join Features Input Form" data-width="100%" href="../images/join-input.png"><img alt="Join Features Input Form" src="../images/join-input.png"/></a>\
+<strong>Figure 12</strong>. Join Features Input Form</p>
+<ol>
+<li>Click the Run Analysis button, and a new layer based on population will be shown.</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Run Join" data-width="100%" href="../images/run-join.png"><img alt="Run Join" src="../images/run-join.png"/></a>\
+<strong>Figure 13</strong>. Join Output</p>
+<ol>
+<li>Symbolize the Wisconsin Counties by Population layer by clicking “change style” button</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Change Style" data-width="100%" href="../images/symbology.png"><img alt="Change Style" src="../images/symbology.png"/></a>\
+<strong>Figure 14</strong>. Change Layer Style</p>
+<ol>
+<li>Choose the appropriate style to clearly show the population</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Change Symbology" data-width="100%" href="../images/change-symbology.png"><img alt="Change Symbology" src="../images/change-symbology.png"/></a>\
+<strong>Figure 15</strong>. Reset Choropleth Symbology</p>
+<ol>
+<li>
+<p>Share or Print the Wisconsin Counties by Population map</p>
+</li>
+<li>
+<p>For copyright information, refer to the copyright tutorial</p>
+</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Share Print" data-width="100%" href="../images/share-print.png"><img alt="Share Print" src="../images/share-print.png"/></a>\
+<strong>Figure 16</strong>. Share or Print</p>
+<h2 id="exercise">Exercise</h2>
+<ol>
+<li>
+<p>What's the advantage of mapping tabular data?</p>
+</li>
+<li>
+<p>Choose different basemap and use different symbol to create different thematic map.</p>
+</li>
+<li>
+<p>Download a shapefile data related to students’ research field and link their tabular data to it.</p>
+</li>
+</ol>
+<h2 id="wrapping-up">Wrapping Up</h2>
+<p>This tutorial is part of an educational series produced by members of the <a href="https://geo.btaa.org">Big Ten Academic Alliance Geoportal</a>. The BTAA Geoportal connects users to digital geospatial resources, including GIS datasets, web services, and digitized historical maps from multiple data clearinghouses and library catalogs. The site is solely a search tool and does not host any data.\
+To access additional tutorials in this series that cover various other topics, visit: <a href="https://sites.google.com/umn.edu/btaa-gdp/tutorials">https://sites.google.com/umn.edu/btaa-gdp/tutorials</a>.</p>
+<p><strong>License statement:</strong>\
+Except where otherwise noted, content in this tutorial is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.</p>
+<p><strong>Providing attribution for this work:</strong>\
+"Linking Tabular Data to Geospatial Data" by Wenjie Wang is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.</p>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Glossary" class="md-footer__link md-footer__link--prev" href="../glossary/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Glossary
+            </div>
+</div>
+</a>
+<a aria-label="Next: Story Maps" class="md-footer__link md-footer__link--next" href="../story_maps/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Story Maps
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      2022
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.sections", "content.tooltips"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
