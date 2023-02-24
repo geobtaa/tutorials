@@ -141,11 +141,6 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#contents">
-    Contents
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#introduction">
     Introduction
   </a>
@@ -208,11 +203,6 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#contents">
-    Contents
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#introduction">
     Introduction
   </a>
@@ -250,15 +240,10 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download="" href="linking_tabular_data_to_geospatial_data.pdf" title="PDF Export"><svg style="height: 1.2rem; width: 1.2rem;" viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm76.45 211.36l-96.42 95.7c-6.65 6.61-17.39 6.61-24.04 0l-96.42-95.7C73.42 337.29 80.54 320 94.82 320H160v-80c0-8.84 7.16-16 16-16h32c8.84 0 16 7.16 16 16v80h65.18c14.28 0 21.4 17.29 11.27 27.36zM377 105L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z"></path></svg></a>
 <h1 id="linking-tabular-data-to-geospatial-data">Linking Tabular Data to Geospatial Data</h1>
-<h2 id="contents">Contents</h2>
-<ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#download-data">Download Data</a></li>
-<li><a href="#prepare-data">Prepare Data</a></li>
-<li><a href="#data-process">Data Process</a></li>
-<li><a href="#exercise">Exercise</a></li>
-<li><a href="#wrapping-up">Wrapping Up</a></li>
-</ul>
+<p><em>This tutorial is part of an educational series produced by members of the <a href="https://geo.btaa.org">Big Ten Academic Alliance Geospatial Information Network</a>.</em></p>
+<p><span class="twemoji"><svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3 0 498.7 13.3 512 29.7 512h388.6c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3h-91.4z"></path></svg></span> Prepared by: Wenjie Wang, GIS Specialist, University of Illinois at Urbana-Champaign (wenjiew@illinois.edu). </p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m11.89 10.34-1.34.7c-.14-.3-.31-.51-.52-.63-.21-.12-.41-.18-.58-.18-.9 0-1.34.59-1.34 1.77 0 .54.11.97.34 1.29.22.32.55.48 1 .48.58 0 .99-.27 1.23-.86l1.23.63c-.26.49-.62.87-1.09 1.15-.46.28-.97.42-1.53.42-.9 0-1.62-.27-2.17-.82C6.58 13.74 6.3 13 6.3 12c0-.95.28-1.7.83-2.26.56-.56 1.26-.84 2.1-.84 1.24-.01 2.13.48 2.66 1.44m5.77 0-1.32.7c-.14-.3-.34-.51-.53-.63-.21-.12-.41-.18-.6-.18-.89 0-1.34.59-1.34 1.77 0 .54.13.97.34 1.29.23.32.56.48 1 .48.59 0 1-.27 1.24-.86l1.25.63c-.28.49-.65.87-1.11 1.15-.47.28-.97.42-1.52.42-.9 0-1.63-.27-2.17-.82-.54-.55-.81-1.29-.81-2.29 0-.95.28-1.7.83-2.26.55-.56 1.25-.84 2.08-.84 1.26-.01 2.14.48 2.66 1.44M12 3.5a8.5 8.5 0 0 1 8.5 8.5 8.5 8.5 0 0 1-8.5 8.5A8.5 8.5 0 0 1 3.5 12 8.5 8.5 0 0 1 12 3.5M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2Z"></path></svg></span> These slides and the accompanying activities are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.</p>
+<hr/>
 <h2 id="introduction">Introduction</h2>
 <p>This tutorial gives an example to help students understand GIS technology allows people to connect data with geography. GIS can relate unrelated information by using location as the key index variable. Sometimes people don’t fully understand their data until they see how it relates to other things in a geographic context. And GIS can help people understand what belongs where.</p>
 <p>Through this tutorial, student can get familiar with how to link tabular data to geospatial data by using ArcGIS Online. Instructors can add more exercises based on students’ need.</p>
@@ -279,8 +264,9 @@
 </li>
 </ol>
 <p>This polygon feature class represents boundaries of the 72 counties in Wisconsin. The data is derived from 1:24,000-scale sources. This feature class was last updated in June 2015.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Polygon Feature Class" data-width="100%" href="../images/wisconsin-2015.png"><img alt="Polygon Feature Class" src="../images/wisconsin-2015.png"/></a>\
-<strong>Figure 01</strong>. Polygon Feature Class for Wisconsin County Boundaries</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Polygon Feature Class" data-width="100%" href="../images/wisconsin-2015.png"><img alt="Polygon Feature Class" src="../images/wisconsin-2015.png"/></a><figcaption>Polygon Feature Class for Wisconsin County Boundaries</figcaption></p>
+</figure>
 <ol>
 <li>
 <p>Open U.S. Census website (<a href="https://www.census.gov/en.html">https://www.census.gov/en.html</a>) and search the keywords "wisconsin counties by population"</p>
@@ -289,51 +275,63 @@
 <p>Open the first result "County Population Totals: 2010-2019" and click Wisconsin to download the table.</p>
 </li>
 </ol>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="County Population" data-width="100%" href="../images/census-pop.png"><img alt="County Population" src="../images/census-pop.png"/></a>\
-<strong>Figure 02</strong>. Annual Estimates of the Resident Population for Counties in Wisconsin: April 1, 2010 to July 1, 2019 (CO-EST2019-ANNRES-55), U.S. Census Bureau, Population Division, March 2020</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="County Population" data-width="100%" href="../images/census-pop.png"><img alt="County Population" src="../images/census-pop.png"/></a><figcaption>Annual Estimates of the Resident Population for Counties in Wisconsin: April 1, 2010 to July 1, 2019 (CO-EST2019-ANNRES-55), U.S. Census Bureau, Population Division, March 2020</figcaption></p>
+</figure>
 <h2 id="prepare-data">Prepare Data</h2>
 <ol>
 <li>Log into ArcGIS Online and create Web Map</li>
 </ol>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Add Layer" data-width="100%" href="../images/add-layer.png"><img alt="Add Layer" src="../images/add-layer.png"/></a>\
-<strong>Figure 03</strong>. Adding a Layer in ArcGIS Online</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Add Layer" data-width="100%" href="../images/add-layer.png"><img alt="Add Layer" src="../images/add-layer.png"/></a><figcaption>Adding a Layer in ArcGIS Online</figcaption></p>
+</figure>
 <ol>
 <li>Add WI_Counties_2015.zip as a new layer from File</li>
 </ol>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Choose File" data-width="100%" href="../images/choose-file.png"><img alt="Choose File" src="../images/choose-file.png"/></a>\
-<strong>Figure 04</strong>. Choosing a File in ArcGIS Online</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Choose File" data-width="100%" href="../images/choose-file.png"><img alt="Choose File" src="../images/choose-file.png"/></a><figcaption>Choosing a File in ArcGIS Online</figcaption></p>
+</figure>
 <ol>
 <li>Choose an attribute to show. Here we use “show location only”</li>
 </ol>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Choose Attribute" data-width="100%" href="../images/choose-attribute.png"><img alt="Choose Attribute" src="../images/choose-attribute.png"/></a>\
-<strong>Figure 05</strong>. Choosing an Attribute to Show in ArcGIS Online</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Choose Attribute" data-width="100%" href="../images/choose-attribute.png"><img alt="Choose Attribute" src="../images/choose-attribute.png"/></a><figcaption>Choosing an Attribute to Show in ArcGIS Online</figcaption></p>
+</figure>
 <ol>
 <li>Click “show table” button to open attribute table and get to know what information was included in the geospatial dataset.</li>
 </ol>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Show Table" data-width="100%" href="../images/show-table.png"><img alt="Show Table" src="../images/show-table.png"/></a>\
-<strong>Figure 06</strong>. Show Table in ArcGIS Online</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Attribute Table" data-width="100%" href="../images/attribute-table.png"><img alt="Attribute Table" src="../images/attribute-table.png"/></a>\
-<strong>Figure 07</strong>. Attribute Table in ArcGIS Online</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Show Table" data-width="100%" href="../images/show-table.png"><img alt="Show Table" src="../images/show-table.png"/></a><figcaption>Show Table in ArcGIS Online</figcaption></p>
+</figure>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Attribute Table" data-width="100%" href="../images/attribute-table.png"><img alt="Attribute Table" src="../images/attribute-table.png"/></a><figcaption>Attribute Table in ArcGIS Online</figcaption></p>
+</figure>
 <ol>
-<li>Create a new excel file and name it as "Wisconsin Counties by Population.csv". Copy and paste the county name column and population in 2019 column from U.S. Census spreadsheet into this new excel file. We need to use county name as the common field to link those two tables. Therefore, the name of counties in both table should be the same.\
-Notice: paste the values only and revise the name of counties by using replace tool.</li>
+<li>
+<p>Create a new excel file and name it as "Wisconsin Counties by Population.csv". Copy and paste the county name column and population in 2019 column from U.S. Census spreadsheet into this new excel file. We need to use county name as the common field to link those two tables. Therefore, the name of counties in both table should be the same.</p>
+<p>Notice: paste the values only and revise the name of counties by using replace tool.</p>
+</li>
 </ol>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Shared Data" data-width="100%" href="../images/shared-data.png"><img alt="Shared Data" src="../images/shared-data.png"/></a>\
-<strong>Figure 08</strong>. Shared Attribute Between Two Tables</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Shared Data" data-width="100%" href="../images/shared-data.png"><img alt="Shared Data" src="../images/shared-data.png"/></a><figcaption>Shared Attribute Between Two Tables</figcaption></p>
+</figure>
 <ol>
 <li>Add the “Wisconsin Counties by Population.csv” as a new layer and choose “None, add as table”</li>
 </ol>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Add Layer from File" data-width="100%" href="../images/add-layer-from-file.png"><img alt="Add Layer from File" src="../images/add-layer-from-file.png"/></a>\
-<strong>Figure 09</strong>. Add Layer from File</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Add CSV" data-width="100%" href="../images/add-csv.png"><img alt="Add CSV" src="../images/add-csv.png"/></a>\
-<strong>Figure 10</strong>. Add CSV</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Add Layer from File" data-width="100%" href="../images/add-layer-from-file.png"><img alt="Add Layer from File" src="../images/add-layer-from-file.png"/></a><figcaption>Add Layer from File</figcaption></p>
+</figure>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Add CSV" data-width="100%" href="../images/add-csv.png"><img alt="Add CSV" src="../images/add-csv.png"/></a><figcaption>Add CSV</figcaption></p>
+</figure>
 <h2 id="data-process">Data Process</h2>
 <p>The following steps show how to link tabular data to the geospatial data: </p>
 <ol>
 <li>Click Analysis and choose Join Features</li>
 </ol>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Join Features" data-width="100%" href="../images/join-features.png"><img alt="Join Features" src="../images/join-features.png"/></a>\
-<strong>Figure 11</strong>. Joining Features</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Join Features" data-width="100%" href="../images/join-features.png"><img alt="Join Features" src="../images/join-features.png"/></a><figcaption>Joining Features</figcaption></p>
+</figure>
 <ol>
 <li>
 <p>Choose WI_Counties_2015 as the “Target Layer” and Wisconsin Counties by Population as the “Layer to Join to the Target Layer”.</p>
@@ -345,23 +343,27 @@ Notice: paste the values only and revise the name of counties by using replace t
 <p>Choose a one-to-one join operation and name the result layer as Wisconsin Counties by Population.</p>
 </li>
 </ol>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Join Features Input Form" data-width="100%" href="../images/join-input.png"><img alt="Join Features Input Form" src="../images/join-input.png"/></a>\
-<strong>Figure 12</strong>. Join Features Input Form</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Join Features Input Form" data-width="100%" href="../images/join-input.png"><img alt="Join Features Input Form" src="../images/join-input.png"/></a><figcaption>Join Features Input Form</figcaption></p>
+</figure>
 <ol>
 <li>Click the Run Analysis button, and a new layer based on population will be shown.</li>
 </ol>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Run Join" data-width="100%" href="../images/run-join.png"><img alt="Run Join" src="../images/run-join.png"/></a>\
-<strong>Figure 13</strong>. Join Output</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Run Join" data-width="100%" href="../images/run-join.png"><img alt="Run Join" src="../images/run-join.png"/></a><figcaption>Join Output</figcaption></p>
+</figure>
 <ol>
 <li>Symbolize the Wisconsin Counties by Population layer by clicking “change style” button</li>
 </ol>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Change Style" data-width="100%" href="../images/symbology.png"><img alt="Change Style" src="../images/symbology.png"/></a>\
-<strong>Figure 14</strong>. Change Layer Style</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Change Style" data-width="100%" href="../images/symbology.png"><img alt="Change Style" src="../images/symbology.png"/></a><figcaption>Change Layer Style</figcaption></p>
+</figure>
 <ol>
 <li>Choose the appropriate style to clearly show the population</li>
 </ol>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Change Symbology" data-width="100%" href="../images/change-symbology.png"><img alt="Change Symbology" src="../images/change-symbology.png"/></a>\
-<strong>Figure 15</strong>. Reset Choropleth Symbology</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Change Symbology" data-width="100%" href="../images/change-symbology.png"><img alt="Change Symbology" src="../images/change-symbology.png"/></a><figcaption>Reset Choropleth Symbology</figcaption></p>
+</figure>
 <ol>
 <li>
 <p>Share or Print the Wisconsin Counties by Population map</p>
@@ -370,9 +372,12 @@ Notice: paste the values only and revise the name of counties by using replace t
 <p>For copyright information, refer to the copyright tutorial</p>
 </li>
 </ol>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Share Print" data-width="100%" href="../images/share-print.png"><img alt="Share Print" src="../images/share-print.png"/></a>\
-<strong>Figure 16</strong>. Share or Print</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Share Print" data-width="100%" href="../images/share-print.png"><img alt="Share Print" src="../images/share-print.png"/></a><figcaption>Share or Print</figcaption></p>
+</figure>
 <h2 id="exercise">Exercise</h2>
+<div class="admonition questions">
+<p class="admonition-title">Questions</p>
 <ol>
 <li>
 <p>What's the advantage of mapping tabular data?</p>
@@ -384,6 +389,7 @@ Notice: paste the values only and revise the name of counties by using replace t
 <p>Download a shapefile data related to students’ research field and link their tabular data to it.</p>
 </li>
 </ol>
+</div>
 <h2 id="wrapping-up">Wrapping Up</h2>
 <p>This tutorial is part of an educational series produced by members of the <a href="https://geo.btaa.org">Big Ten Academic Alliance Geoportal</a>. The BTAA Geoportal connects users to digital geospatial resources, including GIS datasets, web services, and digitized historical maps from multiple data clearinghouses and library catalogs. The site is solely a search tool and does not host any data.\
 To access additional tutorials in this series that cover various other topics, visit: <a href="https://sites.google.com/umn.edu/btaa-gdp/tutorials">https://sites.google.com/umn.edu/btaa-gdp/tutorials</a>.</p>
