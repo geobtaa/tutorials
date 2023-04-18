@@ -2,37 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://geobtaa.github.io/tutorials/</loc>
-         <lastmod>2023-03-29</lastmod>
+         <lastmod>2023-04-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://geobtaa.github.io/tutorials/01_types-of-geospatial-information/</loc>
+         <lastmod>2023-04-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://geobtaa.github.io/tutorials/02_find-maps/</loc>
+         <lastmod>2023-04-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://geobtaa.github.io/tutorials/03_find-geospatial-data/</loc>
+         <lastmod>2023-04-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://geobtaa.github.io/tutorials/04_evaluate-geospatial-information/</loc>
+         <lastmod>2023-04-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://geobtaa.github.io/tutorials/05_web-services/</loc>
+         <lastmod>2023-04-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://geobtaa.github.io/tutorials/georeference/</loc>
-         <lastmod>2023-03-29</lastmod>
+         <lastmod>2023-04-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://geobtaa.github.io/tutorials/glossary/</loc>
-         <lastmod>2023-03-29</lastmod>
+         <lastmod>2023-04-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://geobtaa.github.io/tutorials/linking_tabular_data_to_geospatial_data/</loc>
-         <lastmod>2023-03-29</lastmod>
+         <lastmod>2023-04-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://geobtaa.github.io/tutorials/story_maps/</loc>
-         <lastmod>2023-03-29</lastmod>
+         <lastmod>2023-04-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://geobtaa.github.io/tutorials/tutorial_web-services/</loc>
-         <lastmod>2023-03-29</lastmod>
+         <loc>https://geobtaa.github.io/tutorials/activities/03_activity-1/</loc>
+         <lastmod>2023-04-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://geobtaa.github.io/tutorials/types_of_geospatial_information/</loc>
-         <lastmod>2023-03-29</lastmod>
+         <loc>https://geobtaa.github.io/tutorials/activities/03_activity-2/</loc>
+         <lastmod>2023-04-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
