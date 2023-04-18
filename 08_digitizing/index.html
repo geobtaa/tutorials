@@ -6,12 +6,12 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Big Ten Academic Alliance Geospatial Information Network" name="author"/>
-<link href="https://geobtaa.github.io/tutorials/glossary/" rel="canonical"/>
-<link href="../10_story-maps/" rel="prev"/>
-<link href="../activities/03_activity-1/" rel="next"/>
+<link href="https://geobtaa.github.io/tutorials/08_digitizing/" rel="canonical"/>
+<link href="../07_georeference/" rel="prev"/>
+<link href="../09_create-elevation-surface-models/" rel="next"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-9.1.5+insiders-4.32.4" name="generator"/>
-<title>Glossary - GeoBTAA Tutorials</title>
+<title>08 digitizing - GeoBTAA Tutorials</title>
 <link href="../assets/stylesheets/main.323870f8.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.6932e648.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -36,9 +36,6 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#arcgis-dynamic-map-layer-service">
-          Skip to content
-        </a>
 </div>
 <div data-md-component="announce">
 </div>
@@ -60,7 +57,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Glossary
+              08 digitizing
             
           </span>
 </div>
@@ -208,8 +205,9 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../08_digitizing/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
     
   
@@ -244,20 +242,8 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-<span class="md-ellipsis">
-    
-  
-    Glossary
-  
-
-    
-  </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../glossary/">
 <span class="md-ellipsis">
     
   
@@ -267,86 +253,6 @@
     
   </span>
 </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#arcgis-dynamic-map-layer-service">
-<span class="md-ellipsis">
-      
-        ArcGIS Dynamic Map Layer Service
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#arcgis-feature-layer-service">
-<span class="md-ellipsis">
-      
-        ArcGIS Feature Layer Service
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#arcgis-image-map-layer-service">
-<span class="md-ellipsis">
-      
-        ArcGIS Image Map Layer Service
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#arcgis-tiled-map-layer-service">
-<span class="md-ellipsis">
-      
-        ArcGIS Tiled Map Layer Service
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#index-maps">
-<span class="md-ellipsis">
-      
-        Index Maps
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#international-image-interoperability-framework-iiif">
-<span class="md-ellipsis">
-      
-        International Image Interoperability Framework (IIIF)
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#web-mapping-service-wms">
-<span class="md-ellipsis">
-      
-        Web Mapping Service (WMS)
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#web-feature-service-wfs">
-<span class="md-ellipsis">
-      
-        Web Feature Service (WFS)
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_13" type="checkbox"/>
@@ -407,123 +313,13 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#arcgis-dynamic-map-layer-service">
-<span class="md-ellipsis">
-      
-        ArcGIS Dynamic Map Layer Service
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#arcgis-feature-layer-service">
-<span class="md-ellipsis">
-      
-        ArcGIS Feature Layer Service
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#arcgis-image-map-layer-service">
-<span class="md-ellipsis">
-      
-        ArcGIS Image Map Layer Service
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#arcgis-tiled-map-layer-service">
-<span class="md-ellipsis">
-      
-        ArcGIS Tiled Map Layer Service
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#index-maps">
-<span class="md-ellipsis">
-      
-        Index Maps
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#international-image-interoperability-framework-iiif">
-<span class="md-ellipsis">
-      
-        International Image Interoperability Framework (IIIF)
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#web-mapping-service-wms">
-<span class="md-ellipsis">
-      
-        Web Mapping Service (WMS)
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#web-feature-service-wfs">
-<span class="md-ellipsis">
-      
-        Web Feature Service (WFS)
-      
-    </span>
-</a>
-</li>
-</ul>
 </nav>
 </div>
 </div>
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1>Glossary</h1>
-<h3 id="arcgis-dynamic-map-layer-service">ArcGIS Dynamic Map Layer Service<a class="headerlink" href="#arcgis-dynamic-map-layer-service" title="Permanent link">¶</a></h3>
-<dl>
-<dd>An ArcGIS Dynamic Map Layer is based on vector data. (points, lines, and polygons). Map image layers are dynamically rendered image tiles.</dd>
-</dl>
-<h3 id="arcgis-feature-layer-service">ArcGIS Feature Layer Service<a class="headerlink" href="#arcgis-feature-layer-service" title="Permanent link">¶</a></h3>
-<dl>
-<dd>An ArcGIS Feature Layer Service displays vector data (points, lines, and polygons) as individual or collected features.</dd>
-</dl>
-<h3 id="arcgis-image-map-layer-service">ArcGIS Image Map Layer Service<a class="headerlink" href="#arcgis-image-map-layer-service" title="Permanent link">¶</a></h3>
-<dl>
-<dd>An ArcGIS Image Map Layer displays raster data (a grid of cells used to store imagery).</dd>
-</dl>
-<h3 id="arcgis-tiled-map-layer-service">ArcGIS Tiled Map Layer Service<a class="headerlink" href="#arcgis-tiled-map-layer-service" title="Permanent link">¶</a></h3>
-<dl>
-<dd>An ArcGIS Tiled Map Layer Service displays set of web-accessible tiles that reside on a server.</dd>
-</dl>
-<h3 id="index-maps">Index Maps<a class="headerlink" href="#index-maps" title="Permanent link">¶</a></h3>
-<dl>
-<dd>Index maps are a type of finding aid that allows a user to use a map to select a specific item within a set. Resources in the BTAA Geoportal that use index maps are multi-page items, such as atlases and sheet maps. To find items on an index map, click a green polygon or point in the map viewer. A preview of the item will appear beneath the map, and the user can click a link to be directed to the selected map page.</dd>
-</dl>
-<h3 id="international-image-interoperability-framework-iiif">International Image Interoperability Framework (IIIF)<a class="headerlink" href="#international-image-interoperability-framework-iiif" title="Permanent link">¶</a></h3>
-<dl>
-<dd>The International Image Interoperability Framework (IIIF) web service <abbr title="Application Programming Interface">API</abbr> displays an image from a server. This image can be panned and zoomed.</dd>
-</dl>
-<h3 id="web-mapping-service-wms">Web Mapping Service (WMS)<a class="headerlink" href="#web-mapping-service-wms" title="Permanent link">¶</a></h3>
-<dl>
-<dd>A Web Map Service renders a geospatial dataset as map images.</dd>
-</dl>
-<h3 id="web-feature-service-wfs">Web Feature Service (WFS)<a class="headerlink" href="#web-feature-service-wfs" title="Permanent link">¶</a></h3>
-<dl>
-<dd>A Web Feature Service serves queryable geographic features.</dd>
-</dl>
+<h1>08 digitizing</h1>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>

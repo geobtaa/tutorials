@@ -6,12 +6,12 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Big Ten Academic Alliance Geospatial Information Network" name="author"/>
-<link href="https://geobtaa.github.io/tutorials/03_find-geospatial-data/" rel="canonical"/>
-<link href="../02_find-maps/" rel="prev"/>
-<link href="../04_evaluate-geospatial-information/" rel="next"/>
+<link href="https://geobtaa.github.io/tutorials/07_georeference/" rel="canonical"/>
+<link href="../06_link-tabular-data/" rel="prev"/>
+<link href="../08_digitizing/" rel="next"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-9.1.5+insiders-4.32.4" name="generator"/>
-<title>Find Geospatial Data - GeoBTAA Tutorials</title>
+<title>Georeference a Map - GeoBTAA Tutorials</title>
 <link href="../assets/stylesheets/main.323870f8.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.6932e648.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -36,7 +36,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#finding-geospatial-data">
+<a class="md-skip" href="#introduction">
           Skip to content
         </a>
 </div>
@@ -60,7 +60,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Find Geospatial Data
+              Georeference a Map
             
           </span>
 </div>
@@ -148,20 +148,8 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-<span class="md-ellipsis">
-    
-  
-    Find Geospatial Data
-  
-
-    
-  </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03_find-geospatial-data/">
 <span class="md-ellipsis">
     
   
@@ -171,77 +159,6 @@
     
   </span>
 </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#learning-objectives">
-<span class="md-ellipsis">
-      
-        Learning Objectives
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#introduction">
-<span class="md-ellipsis">
-      
-        Introduction
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#framing-your-search">
-<span class="md-ellipsis">
-      
-        Framing your search
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#activity-1">
-<span class="md-ellipsis">
-      
-        Activity 1
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#searching-the-btaa-geoportal">
-<span class="md-ellipsis">
-      
-        Searching the BTAA Geoportal
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#activity-2">
-<span class="md-ellipsis">
-      
-        Activity 2
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#wrapping-up">
-<span class="md-ellipsis">
-      
-        Wrapping Up
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../04_evaluate-geospatial-information/">
@@ -279,8 +196,20 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../07_georeference/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Georeference a Map
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
     
   
@@ -290,6 +219,50 @@
     
   </span>
 </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+<span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#download-data">
+<span class="md-ellipsis">
+      
+        Download Data
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data-processing">
+<span class="md-ellipsis">
+      
+        Data Processing
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#publish-map-on-arcgis-online">
+<span class="md-ellipsis">
+      
+        Publish Map on ArcGIS Online
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../08_digitizing/">
@@ -404,15 +377,6 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#learning-objectives">
-<span class="md-ellipsis">
-      
-        Learning Objectives
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#introduction">
 <span class="md-ellipsis">
       
@@ -422,46 +386,28 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#framing-your-search">
+<a class="md-nav__link" href="#download-data">
 <span class="md-ellipsis">
       
-        Framing your search
+        Download Data
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#activity-1">
+<a class="md-nav__link" href="#data-processing">
 <span class="md-ellipsis">
       
-        Activity 1
+        Data Processing
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#searching-the-btaa-geoportal">
+<a class="md-nav__link" href="#publish-map-on-arcgis-online">
 <span class="md-ellipsis">
       
-        Searching the BTAA Geoportal
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#activity-2">
-<span class="md-ellipsis">
-      
-        Activity 2
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#wrapping-up">
-<span class="md-ellipsis">
-      
-        Wrapping Up
+        Publish Map on ArcGIS Online
       
     </span>
 </a>
@@ -473,99 +419,121 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="finding-geospatial-data">Finding Geospatial Data<a class="headerlink" href="#finding-geospatial-data" title="Permanent link">¶</a></h1>
+<h1>Georeference a Map</h1>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 21a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5m1-8h8.5L11 16.5l1.42 1.42L18.34 12l-5.92-5.92L11 7.5l3.5 3.5H6v2Z"></path></svg></span> Purpose: To help students locate a map for a given topic and use it in a document.</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 21a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5m1-8h8.5L11 16.5l1.42 1.42L18.34 12l-5.92-5.92L11 7.5l3.5 3.5H6v2Z"></path></svg></span> Purpose: How to georeference a map in ArcMap.</p>
 <p><img alt="⏲" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/23f2.svg" title=":timer:"> Estimated time to complete: 40-50 minutes</img></p>
-<p><span class="twemoji"><svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M224 256a128 128 0 1 0 0-256 128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3 0 498.7 13.3 512 29.7 512h388.6c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3h-91.4z"></path></svg></span> Prepared by: Joshua Sadvari, Geospatial Information Librarian, The Ohio State University (sadvari.1@osu.edu). </p>
+<p><span class="twemoji"><svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M224 256a128 128 0 1 0 0-256 128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3 0 498.7 13.3 512 29.7 512h388.6c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3h-91.4z"></path></svg></span> Prepared by: Wenjie Wang, GIS Specialist, University of Illinois at Urbana-Champaign (wenjiew@illinois.edu). </p>
 <p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m11.89 10.34-1.34.7c-.14-.3-.31-.51-.52-.63-.21-.12-.41-.18-.58-.18-.9 0-1.34.59-1.34 1.77 0 .54.11.97.34 1.29.22.32.55.48 1 .48.58 0 .99-.27 1.23-.86l1.23.63c-.26.49-.62.87-1.09 1.15-.46.28-.97.42-1.53.42-.9 0-1.62-.27-2.17-.82C6.58 13.74 6.3 13 6.3 12c0-.95.28-1.7.83-2.26.56-.56 1.26-.84 2.1-.84 1.24-.01 2.13.48 2.66 1.44m5.77 0-1.32.7c-.14-.3-.34-.51-.53-.63-.21-.12-.41-.18-.6-.18-.89 0-1.34.59-1.34 1.77 0 .54.13.97.34 1.29.23.32.56.48 1 .48.59 0 1-.27 1.24-.86l1.25.63c-.28.49-.65.87-1.11 1.15-.47.28-.97.42-1.52.42-.9 0-1.63-.27-2.17-.82-.54-.55-.81-1.29-.81-2.29 0-.95.28-1.7.83-2.26.55-.56 1.25-.84 2.08-.84 1.26-.01 2.14.48 2.66 1.44M12 3.5a8.5 8.5 0 0 1 8.5 8.5 8.5 8.5 0 0 1-8.5 8.5A8.5 8.5 0 0 1 3.5 12 8.5 8.5 0 0 1 12 3.5M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2Z"></path></svg></span> License: Except where otherwise noted, content in this tutorial is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.</p>
 </div>
-<details class="note">
-<summary>Note for Instructors</summary>
-<p>This introductory tutorial can support class and research projects in any discipline where students are expected to use geospatial data but may be less familiar with how to locate and access potential sources of those data.</p>
-<p>The tutorial is divided into two activities that can be used separately or in conjunction with one another depending on course- or assignment-level learning objectives. These activities may be appropriate for students at both the undergraduate and graduate level.</p>
-<p>The tutorial was designed to allow for use in in-person, hybrid, and fully online instructional contexts, and instructors could assign the activities to be completed individually or in small groups depending on course structure and goals.</p>
-</details>
-<h2 id="learning-objectives">Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">¶</a></h2>
-<p>Through completing this tutorial, students will:</p>
-<ol>
-<li>Frame a search strategy for geospatial data based on their research question and anticipated data needs.</li>
-<li>Perform a search for geospatial data in the BTAA Geoportal using the text, map, and facet searching features of that system.</li>
-<li>Determine how to access relevant geospatial datasets using the BTAA Geoportal based on the results of their search process.</li>
-</ol>
+<hr/>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<p>Georeferencing is a commonly used tool to accurately digitize data on a paper map. It uses a series of control points in the digital image to associate this image with spatial locations. The digital image could be an aerial photograph, a scanned map, or a picture of a topographic map. The georeferenced map can be used for basic map analysis, such as calculating distances and areas. In this tutorial, you will learn how to georeference a historical map by using ArcMap. </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Click on any of the images in this tutorial to zoom in.</p>
+</div>
+<h2 id="download-data">Download Data<a class="headerlink" href="#download-data" title="Permanent link">¶</a></h2>
+<ol>
+<li>Visit the <a href="https://geo.btaa.org">BTAA Geoportal</a> and search with the keywords <code>Hyde Park Community</code></li>
+<li>Open the result titled "Hyde Park Community /prepared by the Department of Sociology, the University of Chicago."</li>
+<li>Click the down arrow at the top right of the image preview box and select a resolution to download.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Download image" data-width="100%" href="../images/hyde-iiif.png"><img alt="Download image" src="../images/hyde-iiif.png" width="500"/></a>
+<figcaption>Download an image</figcaption>
+</figure></li>
+<li>Right click the map and save the image as “ark_61001_b2pn1qx6zj2q.jpg”</li>
+</ol>
+<h2 id="data-processing">Data Processing<a class="headerlink" href="#data-processing" title="Permanent link">¶</a></h2>
+<ol>
+<li>Open ArcMap</li>
+<li>Click <strong>Add Basemap</strong> and choose Streets map</li>
+<li>Zoom in to the study area: Hyde Park, Chicago, Illinois
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Add Basemap" data-width="100%" href="../images/basemap.png"><img alt="Add Basemap" src="../images/basemap.png" width="500"/></a><figcaption>Add Basemap and Zoom to Hyde Park</figcaption>
+</figure></li>
+<li>Click <strong>Add Data</strong> and choose the image “ark_61001_b2pn1qx6zj2q.jpg”</li>
+<li>Click <strong>Customize</strong> -&gt; <strong>Toolbar</strong> -&gt; <strong>Georeferencing</strong> to add georeferenced tool</li>
+<li>Click <strong>Fit To Display</strong> to show the image in the study area.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Fit Display" data-width="100%" href="../images/fit-display.PNG"><img alt="Fit Display" src="../images/fit-display.PNG" width="500"/></a><figcaption>Fit Scanned Map to Display</figcaption>
+</figure></li>
+<li>Right click Layers -&gt; Properties and select <strong>WGS_1984_Web_Mercator_Auxiliary_Sphere</strong> as the coordinate system. 
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Set Coordinate System" data-width="100%" href="../images/set-coord-sys.PNG"><img alt="Set Coordinate System" src="../images/set-coord-sys.PNG" width="500"/></a><figcaption>Set Coordinate System</figcaption>
+</figure></li>
+<li>Click <strong>Viewer</strong> to show the image in a new window.</li>
+<li>Click <strong>Add Control Points</strong> to select control points. Select control points from the viewer window, and then choose the corresponding location in the street map.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Add Control Points" data-width="100%" href="../images/control-points.PNG"><img alt="Add Control Points" src="../images/control-points.PNG" width="500"/></a><figcaption>Add Control Points</figcaption>
+</figure></li>
+<li>Select control points in the area close to the four corners of the map.</li>
+<li>
+<p>Select additional control points. The more points you assign the more accurate your georeferenced map will be.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="More Control Points" data-width="100%" href="../images/point-diagram.PNG"><img alt="More Control Points" src="../images/point-diagram.PNG" width="500"/></a><figcaption>More Control Points</figcaption>
+</figure></p>
+<div class="admonition tips">
+<p class="admonition-title">Tips</p>
+<p>Here are some tips for choosing control points:</p>
 <ul>
-<li>Geospatial data are any data referenced to locations on the earth. Geospatial data provide information about the locations and shapes of, and relationships between, geographic features.</li>
-<li>Geospatial data can be found in various types and formats. For a brief overview, see this tutorial about “<a href="../01_types-of-geospatial-information/">Types of Geospatial Information.</a>”</li>
-<li>The search for geospatial data will often be driven by a particular research topic or question.</li>
-<li>As with other types of information sources, the search for geospatial data can be a complex and iterative process. This process can include brainstorming potential sources, selecting and exploring specific sources, and refining both strategies and needs depending on search results.</li>
+<li>
+<p>The number of control points needed depends on the image being used. Normally, at least four control points are required for georeferencing.</p>
+</li>
+<li>
+<p>Choose road crossings or sidewalk intersections, because the edges of roads may change over time.</p>
+</li>
+<li>
+<p>The control points should be spread across the unreferenced image.</p>
+</li>
 </ul>
-<h2 id="framing-your-search">Framing your search<a class="headerlink" href="#framing-your-search" title="Permanent link">¶</a></h2>
-<p>As you get started, one way to frame your search is by asking yourself some What, Where, When, and Who questions. Your answers to these questions will help you to determine the initial scope of your data needs in relation to your research question and to brainstorm some potential sources to begin your search.</p>
-<h4 id="what">What<a class="headerlink" href="#what" title="Permanent link">¶</a></h4>
-<ul>
-<li>What is my research question, and what types of analysis am I planning to carry out?</li>
-<li>What data will I need to address this question or carry out this analysis?</li>
-<li>What types of data am I seeking (e.g., vector, raster, tabular)?</li>
-</ul>
-<h4 id="where">Where<a class="headerlink" href="#where" title="Permanent link">¶</a></h4>
-<ul>
-<li>What geographic area(s) am I studying?</li>
-<li>What spatial scale/resolution am I planning to use for my analysis, and is this realistic?</li>
-</ul>
-<h4 id="when">When<a class="headerlink" href="#when" title="Permanent link">¶</a></h4>
-<ul>
-<li>What time period(s) am I studying?</li>
-<li>Is my analysis based on a single point in time, or am I planning to compare data across multiple time periods?</li>
-<li>What is my desired periodicity for data collection (e.g., monthly, annually, every decade), and is this realistic?</li>
-</ul>
-<h4 id="who">Who<a class="headerlink" href="#who" title="Permanent link">¶</a></h4>
-<ul>
-<li>Who is likely to care about this research topic and associated datasets?</li>
-<li>Who has published on this topic, and what data did they use?</li>
-<li>What government agencies, educational institutions, non-profits, research centers, commercial entities, or other organizations might collect and distribute these data?</li>
-</ul>
-<h2 id="activity-1">Activity 1<a class="headerlink" href="#activity-1" title="Permanent link">¶</a></h2>
-<p><a href="https://docs.google.com/document/d/1DvRzjwO6R94fUe4qwNd0ErEgQ1k2xVAhwJFelZuRD3M/edit?usp=share_link">Use the worksheet provided</a> to take some notes related to these questions to help frame your search strategy for geospatial data.</p>
-<h2 id="searching-the-btaa-geoportal">Searching the BTAA Geoportal<a class="headerlink" href="#searching-the-btaa-geoportal" title="Permanent link">¶</a></h2>
-<p>Geoportals are systems designed to facilitate the discoverability and accessibility of geospatial information resources. They are generally organized around specific agencies, regions, or themes, and often aggregate data from many sources.</p>
-<p>Geoportals can serve as a good starting point when searching for geospatial data for a project, though no single geoportal can be considered a “one-stop shop” for meeting all data needs.</p>
-<p>On the BTAA Geoportal homepage, users can find items by:</p>
-<ul>
-<li>entering keyword</li>
-<li>browsing categories</li>
-<li>searching with the interactive map</li>
-</ul>
-<p>These options are good for an initial search in the BTAA Geoportal. Once you are on the search results page, you can refine your search using the available facets, such as place, year, subject, or creator. <a href="https://sites.google.com/umn.edu/btaa-gdp/help/how-to-use-the-btaa-geoportal#h.p_4hbj0ETHrUBp">See here for a description of all available facets.</a></p>
-<p>Notice how many of the facets align with some aspect of the <strong>What</strong>, <strong>Where</strong>, <strong>When</strong>, and <strong>Who</strong> questions used to help frame your search.</p>
-<p>When you select a record in the search results, you’ll be taken to its item page. This page displays additional information about the item, as well as some options for accessing the data, such as:</p>
-<ul>
-<li>Direct download (generally as a shapefile)</li>
-<li>Visit source (for possible downloads in other formats)</li>
-<li>Open in ArcGIS (for use in ArcGIS Online)</li>
-<li>Web service (to use in various desktop or online applications</li>
-</ul>
-<h2 id="activity-2">Activity 2<a class="headerlink" href="#activity-2" title="Permanent link">¶</a></h2>
-<p><a href="https://docs.google.com/document/d/1xr4w88DXFQBNkPvfepejY7Ss3G9aotsHBkZcckAp7wQ/edit?usp=share_link">Use the worksheet provided</a> to perform a search in the BTAA Geoportal and determine how to access relevant datasets based on your search results.
-Activity 2 Worksheet</p>
-<h2 id="wrapping-up">Wrapping Up<a class="headerlink" href="#wrapping-up" title="Permanent link">¶</a></h2>
-<p>Once you’ve located relevant data for your project, ask yourself some <strong>How</strong> questions:</p>
-<ul>
-<li>How were the data created or collected? Is information about the methodology used accessible and from an authoritative source?</li>
-<li>Are the data GIS-ready? If not, how will I prepare them for use in my project? Are there any other steps related to data preparation that will be required (e.g., cleaning, extraction, transformation) before I can use these data?</li>
-<li>Are there limitations on how the data can be used in my work?</li>
-<li>How can I appropriately cite the data if I use them in my own work?</li>
-<li>Based on my answers to all of the preceding questions, will these data be appropriate for meeting my project needs?</li>
-</ul>
-<p>Not sure how to best evaluate a geospatial dataset to determine if it is appropriate to use in your project? Learn more in this tutorial on “Evaluating Geospatial Information”.</p>
-<p>A few additional resources for finding geospatial data:</p>
-<ul>
-<li><a href="https://livingatlas.arcgis.com/en/home/">ArcGIS Living Atlas of the World</a></li>
-<li><a href="https://www.usgs.gov/core-science-systems/ngp/tnm-delivery/">The National Map (USGS)</a></li>
-<li><a href="https://www.census.gov/programs-surveys/geography/guidance/tiger-data-products-guide.html">TIGER Data Products (U.S. Census Bureau)</a></li>
-<li><a href="http://freegisdata.rtwilson.com/#home">Robin Wilson’s list of free GIS data</a></li>
-</ul>
+</div>
+</li>
+<li>
+<p>Click <strong>View Link Table</strong>. It is up to you to determine the acceptable residual values. If a link has a residual value much larger than others, the link should be deleted. 
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Residual Values" data-width="100%" href="../images/residual-values.PNG"><img alt="Residual Values" src="../images/residual-values.PNG" width="500"/></a><figcaption>Residual Values</figcaption>
+</figure></p>
+</li>
+<li>After georeferencing, click <strong>Rectify</strong> to save the result.</li>
+<li>In the layer property, change transparency to 50%. It is an easy to compare the georeferenced map locations with the real world locations.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Transparency" data-width="100%" href="../images/transparency.PNG"><img alt="Transparency" src="../images/transparency.PNG" width="500"/></a><figcaption>Make Map Overlay Semi-Transparent</figcaption>
+</figure></li>
+</ol>
+<h2 id="publish-map-on-arcgis-online">Publish Map on ArcGIS Online<a class="headerlink" href="#publish-map-on-arcgis-online" title="Permanent link">¶</a></h2>
+<p>This topic is optional. To publish a hosted layer, you will need publishing privileges in your ArcGIS organizational account.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Publishing a tiled service to ArcGIS Online will consume credits, which are the currency used across ArcGIS. To estimate how many credits you will need to perform specific transactions or store data, you can refer to this website: https://doc.arcgis.com/en/arcgis-online/administer/credits.htm</p>
+</div>
+<ol>
+<li>Sign in with your university account.</li>
+<li>Remove Basemap</li>
+<li>Click <strong>File</strong> -&gt; <strong>Share as</strong> -&gt; <strong>Service</strong></li>
+<li>Choose Publish a service</li>
+<li>Choose a connection and enter service name
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Share Service" data-width="100%" href="../images/share-service.PNG"><img alt="Share Service" src="../images/share-service.PNG" width="500"/></a><figcaption>Share as a Service</figcaption>
+</figure></li>
+<li>Select <strong>Tiled Mapping</strong></li>
+<li>Enter information in Item Description</li>
+<li>In the Sharing tab, you can choose to share your service with yourself (private), your organization, or everyone (public) 
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Enter Service Information" data-width="100%" href="../images/service-info.PNG"><img alt="Enter Service Information" src="../images/service-info.PNG" width="500"/></a><figcaption>Enter Service Information</figcaption>
+</figure></li>
+<li>Select appropriate levels of detail. Do not choose extreme large cashe size, which may consume all your credits. </li>
+<li>Click the <strong>Publish</strong> button to publish this service.</li>
+<li>Tile Packages can be used to save credits. You will not be charged for generating tiles. You will only be charged for tile storage. For more information, please refer to:  https://www.esri.com/about/newsroom/arcuser/use-tile-packages-to-save-credits/
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Scale Range" data-width="100%" href="../images/tile-scales.PNG"><img alt="Scale Range" src="../images/tile-scales.PNG" width="500"/></a><figcaption>Define Scale Range for Tiles</figcaption>
+</figure></li>
+<li>Log in to ArcGIS Online and open the published map in your Content. The map can be digitized for further usage. For more information, please refer to the Digitizing tutorial.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Open in ArcGIS Online" data-width="100%" href="../images/open-arcgis-online.PNG"><img alt="Open in ArcGIS Online" src="../images/open-arcgis-online.PNG" width="500"/></a><figcaption>Open in ArcGIS Online</figcaption>
+</figure></li>
+</ol>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
