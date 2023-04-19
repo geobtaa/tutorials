@@ -1,0 +1,900 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Big Ten Academic Alliance Geospatial Information Network" name="author"/>
+<link href="https://geobtaa.github.io/tutorials/11_zonal-stats-tool/" rel="canonical"/>
+<link href="../10_story-maps/" rel="prev"/>
+<link href="../glossary/" rel="next"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.1.5+insiders-4.32.4" name="generator"/>
+<title>Build a Zonal Stats Tool with Python and Jupyter Notebook - GeoBTAA Tutorials</title>
+<link href="../assets/stylesheets/main.323870f8.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.6932e648.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#introduction">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="GeoBTAA Tutorials" class="md-header__button md-logo" data-md-component="logo" href=".." title="GeoBTAA Tutorials">
+<img alt="logo" src="../images/btaa-logo-white.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            GeoBTAA Tutorials
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Build a Zonal Stats Tool with Python and Jupyter Notebook
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden="">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="GeoBTAA Tutorials" class="md-nav__button md-logo" data-md-component="logo" href=".." title="GeoBTAA Tutorials">
+<img alt="logo" src="../images/btaa-logo-white.png"/>
+</a>
+    GeoBTAA Tutorials
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01_types-of-geospatial-information/">
+<span class="md-ellipsis">
+    
+  
+    Types of Geospatial Information
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02_find-maps/">
+<span class="md-ellipsis">
+    
+  
+    Find Maps
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03_find-geospatial-data/">
+<span class="md-ellipsis">
+    
+  
+    Find Geospatial Data
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04_evaluate-geospatial-information/">
+<span class="md-ellipsis">
+    
+  
+    Evaluate Geospatial Data
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05_web-services/">
+<span class="md-ellipsis">
+    
+  
+    Find &amp; Use GIS Web Services
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06_link-tabular-data/">
+<span class="md-ellipsis">
+    
+  
+    Link Tabular Data to Geospatial Data
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07_georeference/">
+<span class="md-ellipsis">
+    
+  
+    Georeference a Map
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08_digitizing/">
+<span class="md-ellipsis">
+    
+  
+    Digitizing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09_create-elevation-surface-models/">
+<span class="md-ellipsis">
+    
+  
+    09 create elevation surface models
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../10_story-maps/">
+<span class="md-ellipsis">
+    
+  
+    10 Story Maps
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Build a Zonal Stats Tool with Python and Jupyter Notebook
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Build a Zonal Stats Tool with Python and Jupyter Notebook
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+<span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#learning-objectives">
+<span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dont-have-time-to-download-and-install-anaconda-navigator-and-jupyter-notebook">
+<span class="md-ellipsis">
+      
+        Don’t have time to download and install Anaconda-Navigator and Jupyter Notebook?
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prepare-directory-structure">
+<span class="md-ellipsis">
+      
+        Prepare Directory Structure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gather-and-prepare-data">
+<span class="md-ellipsis">
+      
+        Gather and Prepare Data
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#download-necessary-programs">
+<span class="md-ellipsis">
+      
+        Download Necessary Programs
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#run-the-python-code">
+<span class="md-ellipsis">
+      
+        Run the Python Code
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explanation-of-the-code">
+<span class="md-ellipsis">
+      
+        Explanation of the Code
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../glossary/">
+<span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_14" type="checkbox"/>
+<label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Activities
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_14_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_14">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Activities
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../activities/03_activity-1/">
+<span class="md-ellipsis">
+    
+  
+    Find Geospatial Data Activity 1 - Framing Your Search
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../activities/03_activity-2/">
+<span class="md-ellipsis">
+    
+  
+    Find Geospatial Data Activity 2 - Searching the BTAA Geoportal
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+<span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#learning-objectives">
+<span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dont-have-time-to-download-and-install-anaconda-navigator-and-jupyter-notebook">
+<span class="md-ellipsis">
+      
+        Don’t have time to download and install Anaconda-Navigator and Jupyter Notebook?
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prepare-directory-structure">
+<span class="md-ellipsis">
+      
+        Prepare Directory Structure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gather-and-prepare-data">
+<span class="md-ellipsis">
+      
+        Gather and Prepare Data
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#download-necessary-programs">
+<span class="md-ellipsis">
+      
+        Download Necessary Programs
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#run-the-python-code">
+<span class="md-ellipsis">
+      
+        Run the Python Code
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explanation-of-the-code">
+<span class="md-ellipsis">
+      
+        Explanation of the Code
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1>Build a Zonal Stats Tool with Python and Jupyter Notebook</h1>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><em>This tutorial is part of an educational series produced by members of the <a href="https://geo.btaa.org">Big Ten Academic Alliance Geospatial Information Network</a>.</em></p>
+<p><span class="twemoji"><svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M224 256a128 128 0 1 0 0-256 128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3 0 498.7 13.3 512 29.7 512h388.6c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3h-91.4z"></path></svg></span> Prepared by: Jay Bowen, Geographic Information Specialist, University of Iowa (jay-bowen@uiowa.edu). </p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m11.89 10.34-1.34.7c-.14-.3-.31-.51-.52-.63-.21-.12-.41-.18-.58-.18-.9 0-1.34.59-1.34 1.77 0 .54.11.97.34 1.29.22.32.55.48 1 .48.58 0 .99-.27 1.23-.86l1.23.63c-.26.49-.62.87-1.09 1.15-.46.28-.97.42-1.53.42-.9 0-1.62-.27-2.17-.82C6.58 13.74 6.3 13 6.3 12c0-.95.28-1.7.83-2.26.56-.56 1.26-.84 2.1-.84 1.24-.01 2.13.48 2.66 1.44m5.77 0-1.32.7c-.14-.3-.34-.51-.53-.63-.21-.12-.41-.18-.6-.18-.89 0-1.34.59-1.34 1.77 0 .54.13.97.34 1.29.23.32.56.48 1 .48.59 0 1-.27 1.24-.86l1.25.63c-.28.49-.65.87-1.11 1.15-.47.28-.97.42-1.52.42-.9 0-1.63-.27-2.17-.82-.54-.55-.81-1.29-.81-2.29 0-.95.28-1.7.83-2.26.55-.56 1.25-.84 2.08-.84 1.26-.01 2.14.48 2.66 1.44M12 3.5a8.5 8.5 0 0 1 8.5 8.5 8.5 8.5 0 0 1-8.5 8.5A8.5 8.5 0 0 1 3.5 12 8.5 8.5 0 0 1 12 3.5M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2Z"></path></svg></span> These slides and the accompanying activities are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.</p>
+</div>
+<hr/>
+<details class="note">
+<summary>Note for Instructors</summary>
+<p>This tutorial is intended for both MacOS and Windows GIS users with a cursory understanding of how to use python scripts, regardless of whether they are graduate, undergraduate, or faculty/staff users. These users may wish to create easy to use free-standing analytical tools that they can run without desktop GIS software, but are unsure of how to write a script to create GUI-driven tools. </p>
+<p>This tutorial is meant to show users how to create an open-source GUI tool that accepts a raster file and a polygon shapefile as inputs and calculates the coverage of a given range of raster classes within the shapefile polygon. </p>
+<p>The tutorial was designed for self-guided independent learning.</p>
+</details>
+<hr/>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<p>You may need to know the percentage of a specific area devoted to a type of land cover, also known as a zonal statistic. For example,  you may work for a city government office charged with researching climate change mitigation strategies. You know that more trees are associated with a reduction of extreme heat. You might wish to calculate how much of the land in your city is covered by tree canopy to compare this to a desired benchmark.</p>
+<p>Usually, people calculate this by turning to the ArcGIS tool suite, or by running ArcPy in the ArcGIS Python Window. However, ArcGIS can be expensive and out of reach for many users. Moreover, apart from ArcGIS Online, the software depends on Windows, limiting its use. This tutorial will show users how to derive zonal statistics without ArcGIS tools or ArcPy scripting. </p>
+<p>In this example, you will begin with a land cover raster for the State of Iowa and a shapefile of Iowa City. The tutorial will walk through the installation and use of open-source Python packages in Jupyter Notebook and Anaconda-Navigator to calculate the percentage of Iowa City covered by tree canopy (represented by classes 3, 4, 5, and 6 in the raster data). </p>
+<details class="note">
+<summary>Note</summary>
+<p><strong>This code is not meant to be run in IDLE or the ArcGIS Python Window.</strong></p>
+</details>
+<h2 id="learning-objectives">Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">¶</a></h2>
+<p>Students will:</p>
+<ol>
+<li>
+<p>Use basic Terminal or Command Prompt scripts</p>
+</li>
+<li>
+<p>Learn how to install and import Python packages, such as tkinter, gdal, and rasterstats.</p>
+</li>
+<li>
+<p>Implement these packages with Python scripting using Jupyter Notebook in Anaconda-Navigator to calculate zonal statistics for a range of raster classes within an area of interest defined by a shapefile polygon (% of Iowa City covered by tree canopy).</p>
+</li>
+</ol>
+<h2 id="dont-have-time-to-download-and-install-anaconda-navigator-and-jupyter-notebook">Don’t have time to download and install Anaconda-Navigator and Jupyter Notebook?<a class="headerlink" href="#dont-have-time-to-download-and-install-anaconda-navigator-and-jupyter-notebook" title="Permanent link">¶</a></h2>
+<ul>
+<li>
+<p>That's fine! You can run the entire tutorial in <a href="https://notebooks.gesis.org/binder/v2/gh/ui-libraries/Zonal_Statistics_Tool_JupyterNotebook/HEAD">this Binder site for Jupyter Notebook</a>. Just follow the embedded link and click on the "ZonalStatistics_withWidgets.ipynb" file.</p>
+</li>
+<li>
+<p>If you decide to use the Binder tutorial, you may close out of this presentation.</p>
+</li>
+</ul>
+<details class="note">
+<summary>Note</summary>
+<p>The Binder tutorial replaces the tkinter GUI with ipywidgets in order to handle user inputs within Binder over the web.</p>
+</details>
+<h2 id="prepare-directory-structure">Prepare Directory Structure<a class="headerlink" href="#prepare-directory-structure" title="Permanent link">¶</a></h2>
+<ul>
+<li>
+<p>Open Terminal on Mac, or Command Prompt on Windows.</p>
+</li>
+<li>
+<p>If you are using Windows Command Prompt on an institutional or office PC and it defaults to a drive other than the C drive and your user name (such as H:&gt;), input the following to point it to the correct place on the C drive (replace "johnsmith" with your own user name) and press enter:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/d<span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\j</span>ohnsmith
+</code></pre></div>
+<ul>
+<li>In Mac Terminal,  input the following and leave Terminal open:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>Desktop/zonal_statistics<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mkdir<span class="w"> </span>Desktop/zonal_statistics/data<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>curl<span class="w"> </span>https://raw.githubusercontent.com/jebowe3/zonalstats_jupyternotebook/main/ZonalStatistics.ipynb<span class="w"> </span>-L<span class="w"> </span>-o<span class="w"> </span>Desktop/zonal_statistics/ZonalStatistics.ipynb
+</code></pre></div>
+<ul>
+<li>In Windows Command Prompt, type the following and leave Command Prompt open:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>Desktop<span class="se">\z</span>onal_statistics<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mkdir<span class="w"> </span>Desktop<span class="se">\z</span>onal_statistics<span class="se">\d</span>ata<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>curl<span class="w"> </span>https://raw.githubusercontent.com/jebowe3/zonalstats_jupyternotebook/main/ZonalStatistics.ipynb<span class="w"> </span>-L<span class="w"> </span>-o<span class="w"> </span>Desktop/zonal_statistics/ZonalStatistics.ipynb
+</code></pre></div>
+<ul>
+<li>This will create a folder on your desktop called "zonal_statistics" and another folder called "data" within the desktop "zonal_statistics" folder. It will also download the Jupyter Notebook .ipynb file with all of the python code.</li>
+</ul>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Media Options" data-width="100%" href="../images/directory-structure.png"><img alt="Media Options" src="../images/directory-structure.png"/></a><figcaption>Directory Structure</figcaption></p>
+</figure>
+<h2 id="gather-and-prepare-data">Gather and Prepare Data<a class="headerlink" href="#gather-and-prepare-data" title="Permanent link">¶</a></h2>
+<ul>
+<li>
+<p>Open the <a href="https://geo.btaa.org/">BTAA Geoportal</a></p>
+</li>
+<li>
+<p>In the search bar, type "High Resolution Land Cover of Iowa in 2009 Counties: Iowa"</p>
+</li>
+<li>
+<p>Choose and open the <a href="https://geo.btaa.org/catalog/2265abfa-0513-4a83-87a7-38304384d736">result</a> and click the "Original Raster Dataset" button at the right side of the page</p>
+</li>
+</ul>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Media Options" data-width="100%" href="../images/high-res-lc.png"><img alt="Media Options" src="../images/high-res-lc.png"/></a><figcaption>Original Raster Dataset</figcaption></p>
+</figure>
+<ul>
+<li>
+<p>From the list of counties, choose "Johnson"</p>
+</li>
+<li>
+<p>Download, unzip, and save the folder inside the "Desktop/zonal_statistics/data" folder you just created</p>
+</li>
+</ul>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Media Options" data-width="100%" href="../images/johnson-zip.png"><img alt="Media Options" src="../images/johnson-zip.png"/></a><figcaption>Download, Unzip, &amp; Save</figcaption></p>
+</figure>
+<ul>
+<li>Return to Terminal or Command Prompt and type the following code to download the Iowa City boundary files to your data folder:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>https://github.com/jebowe3/zonalstats_jupyternotebook/raw/main/IowaCity_Shapefile.zip<span class="w"> </span>-L<span class="w"> </span>-o<span class="w"> </span>Desktop/zonal_statistics/data/Iowa_City_Poly.zip
+</code></pre></div>
+<ul>
+<li>Unzip this folder so that you have access to the shapefile within it</li>
+</ul>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Media Options" data-width="100%" href="../images/unzipped-folder.png"><img alt="Media Options" src="../images/unzipped-folder.png"/></a><figcaption>Unzip Iowa_City_Poly.zip</figcaption></p>
+</figure>
+<h2 id="download-necessary-programs">Download Necessary Programs<a class="headerlink" href="#download-necessary-programs" title="Permanent link">¶</a></h2>
+<ul>
+<li>
+<p>Download the latest edition of Anaconda-Navigator</p>
+</li>
+<li>
+<p><a href="https://www.anaconda.com/products/individual#macos">MacOS</a></p>
+</li>
+<li>
+<p><a href="https://www.anaconda.com/products/individual#windows">Windows</a></p>
+</li>
+<li>
+<p>Open Anaconda-Navigator and select "Environments"</p>
+</li>
+<li>
+<p>Click the "Create" button and name the new environment "giscience"</p>
+</li>
+<li>
+<p>Create this environment with a Python package</p>
+</li>
+</ul>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Media Options" data-width="100%" href="../images/anaconda-nav.png"><img alt="Media Options" src="../images/anaconda-nav.png"/></a><figcaption>Create an Environment in Anaconda</figcaption></p>
+</figure>
+<ul>
+<li>
+<p>In Anaconda, return to "Home"</p>
+</li>
+<li>
+<p>Make sure the header reads "Applications on giscience"</p>
+</li>
+<li>
+<p>Find Jupyter Notebook and click "Install"</p>
+</li>
+<li>
+<p>After installation, click "Launch"</p>
+</li>
+</ul>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Media Options" data-width="100%" href="../images/launch-jupyter.png"><img alt="Media Options" src="../images/launch-jupyter.png"/></a><figcaption>Launch Jupyter Notebook</figcaption></p>
+</figure>
+<ul>
+<li>
+<p>Inside Jupyter Notebook, navigate to "Desktop/zonal_statistics"</p>
+</li>
+<li>
+<p>Click on the "ZonalStatistics.ipynb" file</p>
+</li>
+</ul>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Media Options" data-width="100%" href="../images/ipynb-file.png"><img alt="Media Options" src="../images/ipynb-file.png"/></a><figcaption>Open ZonalStatistics.ipynb</figcaption></p>
+</figure>
+<ul>
+<li>
+<p>You have already downloaded the sample data, so skip the first cell</p>
+</li>
+<li>
+<p>Run the cell under "Install Required Packages" to ensure that you have all of the necessary Python modules to run the code</p>
+</li>
+</ul>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Media Options" data-width="100%" href="../images/install-packages.png"><img alt="Media Options" src="../images/install-packages.png"/></a><figcaption>Install Required Packages</figcaption></p>
+</figure>
+<ul>
+<li>Now, test the modules by running the cell under "Import Modules"</li>
+</ul>
+<h2 id="run-the-python-code">Run the Python Code<a class="headerlink" href="#run-the-python-code" title="Permanent link">¶</a></h2>
+<ul>
+<li>
+<p>Now, follow through the steps in the Jupyter Notebook file, reading the descriptions and commented out code along the way for a better sense of what is happening</p>
+</li>
+<li>
+<p>A GUI input form will open, but it may be hidden behind your browser window. Follow the instructions, providing the City.shp and HRLC_2009_52 files you downloaded for the two browseable file inputs</p>
+</li>
+<li>
+<p>Here, City.shp is the Iowa City boundary, HRLC_2009_52 is the land cover of Johnson County. The land cover classes corresponding to tree canopy are 3 - 6, inclusive...</p>
+</li>
+</ul>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Media Options" data-width="100%" href="../images/input-form.png"><img alt="Media Options" src="../images/input-form.png"/></a><figcaption>GUI Input Form</figcaption></p>
+</figure>
+<h2 id="explanation-of-the-code">Explanation of the Code<a class="headerlink" href="#explanation-of-the-code" title="Permanent link">¶</a></h2>
+<ul>
+<li>If you look inside the metadata xml file that comes with the land cover raster, you will see which classes correspond to which land covers. In this exercise, we are isolating tree coverage (values 3 to 6).</li>
+</ul>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Media Options" data-width="100%" href="../images/lc-classes.png"><img alt="Media Options" src="../images/lc-classes.png"/></a><figcaption>Land Cover Metadata</figcaption></p>
+</figure>
+<ul>
+<li>Now, while we wait for the code to run, let's take a more detailed look at what it is doing...</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">from</span> <span class="nn">tkinter.filedialog</span> <span class="kn">import</span> <span class="n">askdirectory</span>
+<span class="kn">from</span> <span class="nn">tkinter.filedialog</span> <span class="kn">import</span> <span class="n">askopenfilename</span>
+<span class="kn">import</span> <span class="nn">tkinter.messagebox</span>
+<span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+<span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">ogr</span><span class="p">,</span> <span class="n">osr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">zeros</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">logical_and</span>
+<span class="kn">import</span> <span class="nn">rasterio</span> <span class="k">as</span> <span class="nn">rio</span>
+<span class="kn">from</span> <span class="nn">rasterstats</span> <span class="kn">import</span> <span class="n">zonal_stats</span>
+</code></pre></div>
+<p>The script above imports the packages that Python will need to make the tool run. The os module allows the script to interact with the operating system. Tkinter is a GUI package that allows you to build a dialog box / input form for the tool. The osgeo package offers open source libraries, like gdal and ogr, for working with geospatial data. The numpy library allows for mathematical computations, while rasterio and rasterstats allow you easy manipulation and analysis of raster data.</p>
+<p>Also, you should notice how these lines of code interact with the code below to link the defined inputs to the GUI widgets. Notice that you have some control over the placement and appearance of these elements within the GUI. You can also edit the text.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">##  GUI Widgets</span>
+<span class="c1">##  G-1. Shapefile Selection</span>
+<span class="c1">##  1-Label</span>
+<span class="n">label_1</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Select the shapefile for your area of interest"</span><span class="p">)</span>
+<span class="n">label_1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"W"</span><span class="p">)</span>
+
+<span class="c1">##  1-Entry Box</span>
+<span class="n">var_1</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+<span class="n">entry_1</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">var_1</span><span class="p">)</span>
+<span class="n">entry_1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ipadx</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"W"</span><span class="p">)</span>
+
+<span class="c1">##  1-Button</span>
+<span class="n">button_1</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Browse"</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">BrowseFile_1</span><span class="p">)</span>
+<span class="n">button_1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"E"</span><span class="p">)</span>
+</code></pre></div>
+<p>Let’s look at what happens after you click “OK”. The code below defines the form inputs with some more memorable names. It also ensures that the raster class inputs are parsed as numeric values, rather than as strings.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">##  Set input variables</span>
+<span class="n">input_zone_polygon</span> <span class="o">=</span> <span class="n">var_1</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="n">input_value_raster</span> <span class="o">=</span> <span class="n">var_2</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="n">low_class_str</span> <span class="o">=</span> <span class="n">var_3</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="n">high_class_str</span> <span class="o">=</span> <span class="n">var_4</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="c1">## Convert numeric strings to integers</span>
+<span class="n">low_class_int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">low_class_str</span><span class="p">)</span>
+<span class="n">high_class_int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">high_class_str</span><span class="p">)</span>
+</code></pre></div>
+<p>A few lines below, you will see some code that defines the path to the raster file. Beneath this, is some code that isolates the file extension. Following this is a conditional test to isolate and define the driver, which we can use to create the new reclassified raster.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Get the directory path of the input raster</span>
+<span class="n">ras_dir_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">input_value_raster</span><span class="p">)</span>
+
+
+<span class="c1">## Get the file extension of the raster file</span>
+<span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">input_value_raster</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s1">'.tif'</span><span class="p">:</span>
+     <span class="n">drive</span> <span class="o">=</span> <span class="s1">'GTiff'</span>
+<span class="k">elif</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s1">'.img'</span><span class="p">:</span>
+     <span class="n">drive</span> <span class="o">=</span> <span class="s1">'HFA'</span>
+
+<span class="c1">#Define the gdal driver with the drive variable from the conditional test</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="n">drive</span><span class="p">)</span>
+</code></pre></div>
+<p>The code below takes the input raster file and reassigns a binary classification based on the range the user defines in the dialog box. If the classes are higher or lower than the input range, these will be redefined as 0. If the classes match the desired range, they will be redefined as 1. Then, the code creates a new file called “raster2” in the same directory as the input raster and sets the projection.</p>
+<div class="highlight"><pre><span></span><code><span class="n">file</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">input_value_raster</span><span class="p">)</span>
+<span class="n">band</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="c1"># reclassification</span>
+<span class="n">classification_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">low_class_int</span><span class="p">,</span><span class="n">high_class_int</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">classification_output_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">block_sizes</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">GetBlockSize</span><span class="p">()</span>
+<span class="n">x_block_size</span> <span class="o">=</span> <span class="n">block_sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y_block_size</span> <span class="o">=</span> <span class="n">block_sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">xsize</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">XSize</span>
+<span class="n">ysize</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">YSize</span>
+
+<span class="n">max_value</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">GetMaximum</span><span class="p">()</span>
+<span class="n">min_value</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">GetMinimum</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">max_value</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">min_value</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+     <span class="n">stats</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">GetStatistics</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+     <span class="n">max_value</span> <span class="o">=</span> <span class="n">stats</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+     <span class="n">min_value</span> <span class="o">=</span> <span class="n">stats</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># create new file</span>
+<span class="n">file2</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span> <span class="n">ras_dir_path</span> <span class="o">+</span> <span class="s1">'/raster2'</span> <span class="o">+</span> <span class="n">file_ext</span><span class="p">,</span> <span class="n">xsize</span> <span class="p">,</span> <span class="n">ysize</span> <span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GDT_Byte</span><span class="p">)</span>
+
+<span class="c1"># spatial ref system</span>
+<span class="n">file2</span><span class="o">.</span><span class="n">SetGeoTransform</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">GetGeoTransform</span><span class="p">())</span>
+<span class="n">file2</span><span class="o">.</span><span class="n">SetProjection</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">GetProjection</span><span class="p">())</span>
+</code></pre></div>
+<p>The following block of code assigns the newly defined classes to each pixel in the “raster2” file by reading the input pixel values as an array and assigning new values based on a translation of classification breaks from the input “classification_values” [0, 3, 7] to the output “classification_output_values” [0, 1, 0]. Thus, any value less than 3 or greater than or equal to 7 is reclassified as 0, while anything greater than or equal to 3 and less than 7 is reclassified as 1.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">'Reassigning raster values...please wait...'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ysize</span><span class="p">,</span> <span class="n">y_block_size</span><span class="p">):</span>
+     <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">y_block_size</span> <span class="o">&lt;</span> <span class="n">ysize</span><span class="p">:</span>
+          <span class="n">rows</span> <span class="o">=</span> <span class="n">y_block_size</span>
+     <span class="k">else</span><span class="p">:</span>
+          <span class="n">rows</span> <span class="o">=</span> <span class="n">ysize</span> <span class="o">-</span> <span class="n">i</span>
+     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xsize</span><span class="p">,</span> <span class="n">x_block_size</span><span class="p">):</span>
+          <span class="k">if</span> <span class="n">j</span> <span class="o">+</span> <span class="n">x_block_size</span> <span class="o">&lt;</span> <span class="n">xsize</span><span class="p">:</span>
+               <span class="n">cols</span> <span class="o">=</span> <span class="n">x_block_size</span>
+          <span class="k">else</span><span class="p">:</span>
+               <span class="n">cols</span> <span class="o">=</span> <span class="n">xsize</span> <span class="o">-</span> <span class="n">j</span>
+
+          <span class="n">data</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">rows</span><span class="p">)</span>
+          <span class="n">r</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">((</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+          <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">classification_values</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+               <span class="k">if</span> <span class="n">classification_values</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">max_value</span> <span class="ow">and</span> <span class="p">(</span><span class="n">classification_values</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">min_value</span> <span class="p">):</span>
+                    <span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="n">classification_output_values</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">logical_and</span><span class="p">(</span><span class="n">data</span> <span class="o">&gt;=</span> <span class="n">classification_values</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">data</span> <span class="o">&lt;</span> <span class="n">classification_values</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+          <span class="k">if</span> <span class="n">classification_values</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">max_value</span><span class="p">:</span>
+               <span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="n">classification_output_values</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">data</span> <span class="o">&gt;=</span> <span class="n">classification_values</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+
+          <span class="n">file2</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">WriteArray</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+
+<span class="n">file2</span> <span class="o">=</span> <span class="kc">None</span> 
+</code></pre></div>
+<p>Next, the script identifies the projection of the input shapefile and reprojects the “raster2” file to match the projection of the shapefile. The reprojected raster is then saved as “raster2_reproject” in the same directory as the input raster. This process is important because both the polygon and raster need to be in matching projections for the computation of zonal statistics.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Get the EPSG code of the input shapefile</span>
+<span class="n">shp_driver</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s1">'ESRI Shapefile'</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">shp_driver</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">input_zone_polygon</span><span class="p">)</span>
+<span class="n">layer</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">GetLayer</span><span class="p">()</span>
+<span class="n">spatialRef</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">GetSpatialRef</span><span class="p">()</span>
+<span class="n">shp_epsg</span> <span class="o">=</span> <span class="n">spatialRef</span><span class="o">.</span><span class="n">GetAttrValue</span><span class="p">(</span><span class="s2">"GEOGCS|AUTHORITY"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Reproject the raster</span>
+<span class="n">input_raster</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">ras_dir_path</span> <span class="o">+</span> <span class="s1">'/raster2'</span> <span class="o">+</span> <span class="n">file_ext</span><span class="p">)</span>
+<span class="n">output_raster</span> <span class="o">=</span> <span class="n">ras_dir_path</span> <span class="o">+</span> <span class="s1">'/raster2_reproject'</span> <span class="o">+</span> <span class="n">file_ext</span>
+
+<span class="n">warp</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Warp</span><span class="p">(</span><span class="n">output_raster</span><span class="p">,</span><span class="n">input_raster</span><span class="p">,</span><span class="n">dstSRS</span><span class="o">=</span><span class="s1">'EPSG:'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">shp_epsg</span><span class="p">))</span>
+<span class="n">warp</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+<p>The following lines perform the zonal stats analysis and display the percent coverage of the input polygon by the selected raster classes, along with some supporting statistics in a message window that appears on the user’s screen after the analysis is complete.</p>
+<div class="highlight"><pre><span></span><code><span class="n">zs</span> <span class="o">=</span> <span class="n">zonal_stats</span><span class="p">(</span><span class="n">input_zone_polygon</span><span class="p">,</span><span class="n">output_raster</span><span class="p">,</span><span class="n">stats</span><span class="o">=</span><span class="p">[</span><span class="s1">'min'</span><span class="p">,</span> <span class="s1">'max'</span><span class="p">,</span> <span class="s1">'mean'</span><span class="p">,</span> <span class="s1">'count'</span><span class="p">,</span> <span class="s1">'sum'</span><span class="p">])</span>
+
+<span class="c1">## Hide the tkinter root box</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">withdraw</span><span class="p">()</span>
+
+<span class="c1">## Define each zonal stat</span>
+<span class="nb">min</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s1">'min'</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">zs</span><span class="p">]</span>
+<span class="nb">max</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s1">'max'</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">zs</span><span class="p">]</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s1">'mean'</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">zs</span><span class="p">]</span>
+<span class="n">count</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s1">'count'</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">zs</span><span class="p">]</span>
+<span class="nb">sum</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s1">'sum'</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">zs</span><span class="p">]</span>
+
+<span class="c1">## Build the messagebox content</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"AOI covered by selected raster classes: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">mean</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="o">+</span><span class="s2">"%"</span><span class="p">,</span> <span class="s2">"minimum: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">min</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">"maximum: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">max</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">"count: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">count</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">"sum: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">sum</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+
+<span class="c1">## Display the messagebox content in separate lines</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">"Zonal Statistics Summary"</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">))</span>
+</code></pre></div>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Media Options" data-width="100%" href="../images/progress-output.png"><img alt="Media Options" src="../images/progress-output.png"/></a><figcaption>Progress Notes</figcaption></p>
+</figure>
+<p>After processing finishes, it will produce a text box providing information about how much of the polygon is covered by the selected range of classes.</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Media Options" data-width="100%" href="../images/zonal-stats-summary.png"><img alt="Media Options" src="../images/zonal-stats-summary.png"/></a><figcaption>Zonal Statistics Summary</figcaption></p>
+</figure>
+<p>The tool will also output a reprojected raster file (raster2_reproject) that isolates your selected raster class range.</p>
+<p>In the screenshot, you can see the results, isolating the tree canopy classes from the input raster.</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-title="Media Options" data-width="100%" href="../images/ic-tree-canopy.png"><img alt="Media Options" src="../images/ic-tree-canopy.png"/></a><figcaption>Iowa City Tree Canopy Raster</figcaption></p>
+</figure>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      2022
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs Insiders
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.sections", "content.tooltips"], "search": "../assets/javascripts/workers/search.6c7302c4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.a3190745.min.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
